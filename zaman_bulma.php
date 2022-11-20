@@ -1,15 +1,19 @@
 <?php 
 
+/*Burada veritabanından tarih bilgisi cekilir. dakikaya cevrilir ve simdiki zaman ile dakika cinsinden farkı bulunur*/
+
+
 
 include "connect.php";
 
 date_default_timezone_set('Etc/GMT-0');
 
-/*Burada veritabanından tarih bilgisi cekilir. dakikaya cevrilir ve simdiki zaman ile dakika cinsinden farkı bulunur*/
+
 $kayit = $db->query("SELECT * FROM arena");
 $kayit->execute();
 
-/*Zaman farkı varsa devreye girsin basla */
+/*Her bir dakika da bir işlem yapar */
+
 while ($hepsi  =  $kayit->fetch(PDO::FETCH_ASSOC)){ 
 
 	$yil = substr($hepsi["a_zaman"],0,4);
